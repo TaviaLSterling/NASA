@@ -1,19 +1,18 @@
 import Photo from "../models/Photo.js"
 
-let photos = {}
 
+const apiKey = 'IKGnf8cxgG9RVphmNqjal4DAJg7hjtbH2aC30ScI'
+const apodUrl = 'https://api.nasa.gov/planetary/apod?api_key='
 export default class NASAService {
-    getPhotos(draw){
+    getPhotos(date, draw){
     console.log("hello from NASAService")
-    fetch('https://api.nasa.gov/planetary/apod?api_key=IKGnf8cxgG9RVphmNqjal4DAJg7hjtbH2aC30ScI')
+    fetch(apodUrl + apiKey + '&date=' +date)
     .then(res => res.json())
-    .then(res => {
-        let myPhotos = res.results.map(rawPhoto => {
-            let photo = new Photo(rawPhoto)
-            photos[photo.id] = photo
-            return photo
+    .then(data => {
+        draw(new Photo(data))
+            
         })
-        draw(myPhotos)
-    })
+    
+    }
 }
-}
+

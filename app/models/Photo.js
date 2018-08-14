@@ -1,10 +1,10 @@
 export default class Photo {
-    constructor(reqData) {
-        this.copyright = reqData.copyright
-        this.date = reqData.date
-        this.explanation = reqData.explanation
-        this.title = reqData.title
-        this.url = reqData.url
-        this.id = reqData.url
+    constructor(data) {
+        this.copyright = data.copyright
+        this.date = data.date
+        this.explanation = data.explanation
+        this.url = data.url
+        this.title = data.title
+        this.id = data.url
     }
 }

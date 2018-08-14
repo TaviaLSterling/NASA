@@ -1,39 +1,29 @@
 import NASAService from "./NASA-Service.js"
 
 let nasaService = new NASAService
-let app = document.getElementById('app')
 
-function draw(data) {
-    console.log(data)
-    app.innerHTML = `
-    <div id="error"></div>
-<br>
-    <button onclick="app.controllers.nasa.getPhotos()">
-    Get Photo
-    </button>
-    <br>
-    <div id="photos">
-    </div>
-    <br>    
+function drawPhotos(photo) {
+    document.getElementById('photos').innerHTML = 
     
-    `
-}
-function drawPhotos(data) {
-    let photosElem = document.getElementById('photos')
-    let template = ''
-    data.forEach(photo => {
-        template += `<div>
-        ${photo.date}
-        ${photo.explanation}
+    `<div>
+       <h4>${photo.date}</h4><br>
+       <img src="${photo.url}"><br>
+       <h4>${photo.title}</h4>
         </div>`
-    })
-    photosElem.innerHTML = template
-}
+    }
+    
+
 export default class NASAController {
     constructor() {
-        draw()
+        this.getPhotos()
     }
-    getPhotos() {
-        nasaService.getPhotos(drawPhotos)
+    getPhotos(e) {
+        let date = ''
+        if (e) {
+            e.preventDefault();
+            date = e.target.date.value
+        }
+        date = date || new Date(Date.now()).toISOString().split('T')[0]
+        nasaService.getPhotos(date, drawPhotos)
     }
 }

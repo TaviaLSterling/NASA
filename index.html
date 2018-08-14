@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="app/assets/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>NASA Photo of the Day</title>
 </head>
@@ -14,6 +15,11 @@
     <div id="photos">
 
     </div>
+    <form onsubmit="app.controllers.apodController.getPhoto(event)">
+            <label for="date">Pick a Date</label>
+            <input name="date" type="date">
+            <button type='submit'>Submit</button>
+          </form>
 </body>
 <script src="app/main.js" type="module"></script>
 </html>
