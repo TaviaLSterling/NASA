@@ -7,7 +7,7 @@ function draw(data) {
     console.log(data)
     app.innerHTML = `
     <div id="error"></div>
-
+<br>
     <button onclick="app.controllers.nasa.getPhotos()">
     Get Photo
     </button>

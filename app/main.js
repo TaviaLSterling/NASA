@@ -1,4 +1,4 @@
-import NASA-Controller from './components/NASA-controller.js'
+import NASAController from './components/NASA-Controller.js'
 
 class App {
   constructor() {
